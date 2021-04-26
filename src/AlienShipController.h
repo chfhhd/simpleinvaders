@@ -15,12 +15,6 @@ namespace Game {
         void Update();
 
     private:
-        std::vector<std::shared_ptr<Game::AlienShip>> & alienShips;
-
-        Texture2D alienShipTexture{};
-
-        Vector2 alienShipsSpeed = {17.0f, 5.0f};
-
         // number of ships in alien fleet
         const int shipsPerRow = 11;
         const int numberOfRows = 5;
@@ -31,5 +25,11 @@ namespace Game {
 
         // alien ship position (initialized with first ships position)
         const Vector2 startPosition = {0.0f, 0.0f};
+
+        std::vector<std::shared_ptr<Game::AlienShip>> & alienShips;
+
+        Texture2D alienShipTexture{};
+
+        Vector2 alienShipsSpeed = {17.0f, 5.0f};
     };
 }

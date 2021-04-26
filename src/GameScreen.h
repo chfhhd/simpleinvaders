@@ -8,20 +8,32 @@
 #include "Screen.h"
 #include "AlienShip.h"
 #include "Player.h"
+#include "Bullet.h"
 #include "AlienShipController.h"
 
 namespace Game {
     class GameScreen : public Screen {
     private:
+        const int numberOfBullets = 50;
+
         Texture2D playerTexture{};
         Texture2D alienShipTexture{};
+        Texture2D bulletTexture{};
 
         std::vector<std::shared_ptr<Game::AlienShip>> alienShips;
         std::unique_ptr<Game::AlienShipController> alienShipController;
 
         std::shared_ptr<Game::Player> player;
 
+        std::vector<std::shared_ptr<Game::Bullet>> bullets;
+
         GameScreen();
+
+        void LoadTextures();
+
+        void InitPlayer();
+
+        void InitBullets();
 
     public:
         static Screen *getInstance() {

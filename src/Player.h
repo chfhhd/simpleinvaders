@@ -1,11 +1,17 @@
 #pragma once
 
-#include "raylib.h"
 #include "Sprite.h"
+#include "Command.h"
+#include "FireCommand.h"
 
 namespace Game {
-    struct Player : public Sprite {
+    class Player : public Sprite {
+    private:
+
+    public:
         using Sprite::Sprite;
+
+        std::unique_ptr<FireCommand> fireCommand = nullptr;
 
         void ProcessInput();
 
