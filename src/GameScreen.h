@@ -6,12 +6,20 @@
 #include "raylib.h"
 
 #include "Screen.h"
-#include "Sprite.h"
+#include "AlienShip.h"
+#include "Player.h"
+#include "AlienShipController.h"
 
 namespace Game {
     class GameScreen : public Screen {
     private:
-        std::vector<std::unique_ptr<Sprite>> sprites;
+        Texture2D playerTexture{};
+        Texture2D alienShipTexture{};
+
+        std::vector<std::shared_ptr<Game::AlienShip>> alienShips;
+        std::unique_ptr<Game::AlienShipController> alienShipController;
+
+        std::shared_ptr<Game::Player> player;
 
         GameScreen();
 

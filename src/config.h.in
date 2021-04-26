@@ -7,8 +7,5 @@ namespace Game {
     const char* PROJECT_VERSION_MINOR = "@PROJECT_VERSION_MINOR@";
     const char* PROJECT_VERSION_PATCH = "@PROJECT_VERSION_PATCH@";
 
-    const int ScreenWidth = 960;
-    const int ScreenHeight = 540;
-
     //#define GAME_START_FULLSCREEN
 }

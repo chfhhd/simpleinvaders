@@ -6,7 +6,14 @@
 #include "helper.h"
 #include "game.h"
 
-Game::Screen* currentScreen;
+namespace Game {
+    const int ScreenWidth = 960;
+    const int ScreenHeight = 540;
+
+    Game::Screen* currentScreen;
+    int frameCounter = 0;
+}
+
 
 int main() {
     // Enable config flags for resizable window and vertical synchro
@@ -26,33 +33,25 @@ int main() {
 #endif
 
     // Set start screen
-    currentScreen = Game::MenuScreen::getInstance();
+    Game::currentScreen = Game::GameScreen::getInstance();
 
     // Main game loop
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
+        Game::frameCounter++;
+
         // Compute required framebuffer scaling
         float scale = MIN((float) GetScreenWidth() / Game::ScreenWidth, (float) GetScreenHeight() / Game::ScreenHeight);
 
-        // Update virtual mouse (clamped mouse value behind game screen)
-        Vector2 mouse = GetMousePosition();
-        Vector2 virtualMouse = {0};
-        virtualMouse.x =
-                (mouse.x - (static_cast<float>(GetScreenWidth()) - (Game::ScreenWidth * scale)) * 0.5f) / scale;
-        virtualMouse.y =
-                (mouse.y - (static_cast<float>(GetScreenHeight()) - (Game::ScreenHeight * scale)) * 0.5f) / scale;
-        virtualMouse = ClampValue(virtualMouse, {0, 0}, {static_cast<float>(Game::ScreenWidth),
-                                                         static_cast<float>(Game::ScreenHeight)});
-
-        currentScreen->ProcessInput();
-        currentScreen->Update();
+        Game::currentScreen->ProcessInput();
+        Game::currentScreen->Update();
 
         BeginDrawing();
         ClearBackground(BLACK); // Letterbox color
 
         // Draw everything in the render texture, note this will not be rendered on screen, yet
         BeginTextureMode(target);
-        currentScreen->Draw();
+        Game::currentScreen->Draw();
         EndTextureMode();
 
         // Draw RenderTexture2D to window, properly scaled

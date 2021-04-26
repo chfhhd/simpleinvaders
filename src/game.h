@@ -1,7 +1,12 @@
 #pragma once
 
 #include "Screen.h"
-#include "MenuScreen.h"
 #include "GameScreen.h"
 
-extern Game::Screen* currentScreen;
+namespace Game {
+    extern Game::Screen *currentScreen;
+    extern int frameCounter;
+
+    extern const int ScreenWidth;
+    extern const int ScreenHeight;
+}
