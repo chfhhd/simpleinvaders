@@ -13,10 +13,10 @@ Game::AlienShipController::AlienShipController(std::vector<std::shared_ptr<Game:
                                                                    position,
                                                                    true));
 
-            position.x += (float) alienShipTexture.width + margin_x;
+            position.x += (float) alienShipTexture.width + marginHorizontal;
         }
         position.x = startPosition.x;
-        position.y += (float) alienShipTexture.width + margin_y;
+        position.y += (float) alienShipTexture.width + marginVertical;
     }
 }
 
@@ -25,7 +25,7 @@ Game::AlienShipController::~AlienShipController() {
 
 void Game::AlienShipController::Update() {
     if (Game::frameCounter % 60 == 0) {
-        if ((alienShips[10]->pos.x >= ((float) Game::ScreenWidth - (float) alienShipTexture.width)) ||
+        if (alienShips[shipsPerRow-1]->pos.x >= (float) Game::ScreenWidth - (float)alienShipTexture.width  ||   // TODO: This will need some extra spacing on the right side to work perfectly
             (alienShips[0]->pos.x < 0))
             alienShipsSpeed.x *= -1.0f;
 

@@ -10,11 +10,11 @@ Game::GameScreen::GameScreen() {
 
     alienShipController = std::make_unique<Game::AlienShipController>(alienShips, alienShipTexture);
 
-    Vector2 playerPosition;
-    playerPosition.x = (float) Game::ScreenWidth / 2 - (float) playerTexture.width / 2;
-    playerPosition.y = (float) Game::ScreenHeight - (float) playerTexture.height;
+    Vector2 playerStartPosition;
+    playerStartPosition.x = (float) Game::ScreenWidth / 2 - (float) playerTexture.width / 2;
+    playerStartPosition.y = (float) Game::ScreenHeight - (float) playerTexture.height;
     player = std::make_shared<Game::Player>(playerTexture,
-                                            playerPosition,
+                                            playerStartPosition,
                                             true);
 }
 

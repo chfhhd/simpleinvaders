@@ -26,8 +26,8 @@ namespace Game {
         const int numberOfRows = 5;
 
         // horizontal and vertical margin between ships
-        const float margin_x = 17.0;
-        const float margin_y = 17.0;
+        const float marginHorizontal = 17.0;
+        const float marginVertical = 17.0;
 
         // alien ship position (initialized with first ships position)
         const Vector2 startPosition = {0.0f, 0.0f};
