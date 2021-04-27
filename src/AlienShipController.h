@@ -30,8 +30,12 @@ namespace Game {
 
         std::vector<std::shared_ptr<Game::AlienShip>> & alienShips;
 
-        Texture2D alienShipTexture{};
+        Vector2 alienShipsSpeed = {13.0f, 5.0f};
 
-        Vector2 alienShipsSpeed = {17.0f, 5.0f};
+        void MoveShips();
+
+        void Fire();
+
+        bool FreeToFire(int randomShipID);
     };
 }

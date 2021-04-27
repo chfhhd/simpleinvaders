@@ -5,8 +5,11 @@
 
 #include "AlienShipController.h"
 #include "game.h"
-#include <iostream>
-Game::AlienShipController::AlienShipController(std::vector<std::shared_ptr<Game::AlienShip>> &alienShips, Texture2D alienShipTexture, std::vector<std::shared_ptr<Game::Bullet>> &bullets) : alienShips(alienShips) {
+
+Game::AlienShipController::AlienShipController(std::vector<std::shared_ptr<Game::AlienShip>> &alienShips,
+                                               Texture2D alienShipTexture,
+                                               std::vector<std::shared_ptr<Game::Bullet>> &bullets) : alienShips(
+        alienShips) {
     Vector2 position = startPosition;
     Vector2 defaultBulletDirection = {0.0, +1.0};
 
@@ -27,26 +30,37 @@ Game::AlienShipController::AlienShipController(std::vector<std::shared_ptr<Game:
 }
 
 void Game::AlienShipController::Update() {
-    if (Game::frameCounter % 60 == 0) {
-        if (alienShips[shipsPerRow - 1]->pos.x >= (float) Game::ScreenWidth - (float) alienShipTexture.width ||
-            // TODO: This will need some extra spacing on the right side to work perfectly
-            (alienShips[0]->pos.x < 0))
+    MoveShips();
+    Fire();
+}
+
+bool Game::AlienShipController::FreeToFire(int check) {
+    check += shipsPerRow;
+    while (check <= alienShips.size()) {
+        if (!alienShips[check - 1]->destroyed)
+            return false;
+        check += shipsPerRow;
+    }
+    return true;
+}
+
+void Game::AlienShipController::Fire() {
+    if (frameCounter % fireFrequency == 0) {
+        int randomShipID = GetRandomValue(1, (int) alienShips.size());
+        while (alienShips[randomShipID - 1]->destroyed || !FreeToFire(randomShipID)) {
+            randomShipID = GetRandomValue(1, (int) alienShips.size());
+        }
+        alienShips[randomShipID - 1]->fire();
+    }
+}
+
+void Game::AlienShipController::MoveShips() {
+    if (frameCounter % 60 == 0) {
+        if (alienShips[shipsPerRow - 1]->pos.x >= (float) ScreenWidth - (float) alienShips[shipsPerRow - 1]->texture.width || alienShips[0]->pos.x < 0.0)
             alienShipsSpeed.x *= -1.0f;
 
-        for (auto &alienShip : this->alienShips) {
+        for (auto &alienShip : alienShips) {
             alienShip->pos.x += alienShipsSpeed.x;
         }
-    }
-
-    // TODO: Of course with this, only the last row of alien ships can fire. This is just for testing...
-    if (Game::frameCounter % fireFrequency == 0) {
-        int lastShipLastRow = shipsPerRow * numberOfRows;
-        int firstShipLastRow = lastShipLastRow - (shipsPerRow - 1);
-
-        int randomShipFromLastRow = GetRandomValue(firstShipLastRow, lastShipLastRow);
-        std::cout << "---> " << randomShipFromLastRow << std::endl;
-
-        if (!alienShips[randomShipFromLastRow-1]->destroyed)
-            alienShips[randomShipFromLastRow-1]->fire();
     }
 }
