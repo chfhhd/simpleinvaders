@@ -1,5 +1,7 @@
 #pragma once
 
+#include "raylib.h"
+
 #include "Sprite.h"
 
 class Command {

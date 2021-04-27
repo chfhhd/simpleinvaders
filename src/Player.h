@@ -5,17 +5,15 @@
 #include "FireCommand.h"
 
 namespace Game {
-    class Player : public Sprite {
-    private:
-
+    struct Player : public Sprite {
     public:
         using Sprite::Sprite;
 
         std::unique_ptr<FireCommand> fireCommand = nullptr;
 
-        void ProcessInput();
-
         int lives = 3;
         int speed = 5;
+
+        void ProcessInput();
     };
 }

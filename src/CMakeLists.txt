@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(${PROJECT_NAME} main.cpp config.h game.h helper.h Screen.h GameScreen.cpp GameScreen.h Sprite.h AlienShip.h AlienShipController.cpp AlienShipController.h Player.h Player.cpp Bullet.cpp Bullet.h Command.h FireCommand.h FireCommand.cpp)
+add_executable(${PROJECT_NAME} main.cpp config.h game.h helper.h Screen.h GameScreen.cpp GameScreen.h Sprite.h AlienShip.h AlienShipController.cpp AlienShipController.h Player.h Player.cpp Bullet.cpp Bullet.h Command.h FireCommand.h FireCommand.cpp AlienShip.cpp)
 
 # Add config.h.in file
 configure_file(config.h.in config.h)

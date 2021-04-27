@@ -12,7 +12,7 @@ Game::GameScreen::GameScreen() {
 
     InitBullets();
 
-    alienShipController = std::make_unique<Game::AlienShipController>(alienShips, alienShipTexture);
+    alienShipController = std::make_unique<Game::AlienShipController>(alienShips, alienShipTexture, bullets);
 }
 
 void Game::GameScreen::LoadTextures() {
@@ -29,7 +29,8 @@ void Game::GameScreen::InitPlayer() {
                                       playerStartPosition,
                                       true);
 
-    player->fireCommand = std::make_unique<FireCommand>(bullets);
+    Vector2 defaultBulletDirection = {0.0, -1.0};
+    player->fireCommand = std::make_unique<FireCommand>(bullets, defaultBulletDirection);
 }
 
 void Game::GameScreen::InitBullets() {
@@ -62,6 +63,11 @@ void Game::GameScreen::Update() {
     for (auto &bullet : this->bullets) {
         bullet->move();
         if (bullet->active) {
+            collRectangle = {player->pos.x, player->pos.y, (float) player->texture.width, (float) player->texture.height};
+            if(CheckCollisionPointRec(bullet->pos, collRectangle)) {
+                player->lives--;
+            }
+
             for (const auto &alienShip : this->alienShips) {
                 if (!alienShip->destroyed) {
                     collRectangle = {alienShip->pos.x, alienShip->pos.y, (float) alienShip->texture.width,
@@ -93,4 +99,8 @@ void Game::GameScreen::Draw() {
         if (bullet->active)
             DrawTexture(bullet->texture, (int) bullet->pos.x, (int) bullet->pos.y, RAYWHITE);
     }
+
+    std::stringstream livesString;
+    livesString << "Lives: " << player->lives;
+    DrawText(livesString.str().c_str(), 5, Game::ScreenHeight-50, 25, BLACK);
 }

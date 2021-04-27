@@ -2,15 +2,15 @@
 
 #include <memory>
 #include <vector>
+#include <sstream>
+#include <string>
 
 #include "AlienShip.h"
 
 namespace Game {
     class AlienShipController {
     public:
-        explicit AlienShipController(std::vector<std::shared_ptr<Game::AlienShip>> &alienShips, Texture2D alienShipTexture);
-
-        ~AlienShipController();
+        explicit AlienShipController(std::vector<std::shared_ptr<Game::AlienShip>> &alienShips, Texture2D alienShipTexture, std::vector<std::shared_ptr<Game::Bullet>> & bullets);
 
         void Update();
 
@@ -25,6 +25,8 @@ namespace Game {
 
         // alien ship position (initialized with first ships position)
         const Vector2 startPosition = {0.0f, 0.0f};
+
+        int fireFrequency = 50;
 
         std::vector<std::shared_ptr<Game::AlienShip>> & alienShips;
 

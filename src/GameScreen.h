@@ -14,7 +14,7 @@
 namespace Game {
     class GameScreen : public Screen {
     private:
-        const int numberOfBullets = 50;
+        const int numberOfBullets = 100;
 
         Texture2D playerTexture{};
         Texture2D alienShipTexture{};
