@@ -1,10 +1,10 @@
 #include "game.h"
-
+#include "config.h"
 #include "Bullet.h"
 
 bool Game::Bullet::IsOutOfScreen() {
     if (this->pos.y<0 || this->pos.y>(float) Game::ScreenHeight || this->pos.x<0 || this->pos.y>(float)
-    ScreenWidth)
+    Game::ScreenWidth)
     return true;
 
     return false;

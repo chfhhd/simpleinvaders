@@ -3,8 +3,9 @@
 
 #include "raylib.h"
 
-#include "AlienShipController.h"
+#include "config.h"
 #include "game.h"
+#include "AlienShipController.h"
 
 Game::AlienShipController::AlienShipController(std::vector<std::shared_ptr<Game::AlienShip>> &alienShips,
                                                Texture2D alienShipTexture,
@@ -56,7 +57,7 @@ void Game::AlienShipController::Fire() {
 
 void Game::AlienShipController::MoveShips() {
     if (frameCounter % 60 == 0) {
-        if (alienShips[shipsPerRow - 1]->pos.x >= (float) ScreenWidth - (float) alienShips[shipsPerRow - 1]->texture.width || alienShips[0]->pos.x < 0.0)
+        if (alienShips[shipsPerRow - 1]->pos.x >= (float) Game::ScreenWidth - (float) alienShips[shipsPerRow - 1]->texture.width || alienShips[0]->pos.x < 0.0)
             alienShipsSpeed.x *= -1.0f;
 
         for (auto &alienShip : alienShips) {

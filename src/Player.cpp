@@ -1,7 +1,7 @@
 #include "raylib.h"
 
 #include "game.h"
-
+#include "config.h"
 #include "Player.h"
 
 void Game::Player::ProcessInput() {

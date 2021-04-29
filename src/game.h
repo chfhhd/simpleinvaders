@@ -7,6 +7,6 @@ namespace Game {
     extern Game::Screen *currentScreen;
     extern int frameCounter;
 
-    extern const int ScreenWidth;
-    extern const int ScreenHeight;
+    //extern const int ScreenWidth;
+    //extern const int ScreenHeight;
 }

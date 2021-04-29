@@ -2,6 +2,7 @@
 
 #include "GameScreen.h"
 #include "game.h"
+#include "config.h"
 #include "FireCommand.h"
 
 Game::GameScreen::GameScreen() {

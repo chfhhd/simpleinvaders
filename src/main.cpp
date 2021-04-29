@@ -7,8 +7,8 @@
 #include "game.h"
 
 namespace Game {
-    const int ScreenWidth = 960;
-    const int ScreenHeight = 540;
+    //const int ScreenWidth = 960;
+    //const int ScreenHeight = 540;
 
     Game::Screen* currentScreen;
     int frameCounter = 0;
