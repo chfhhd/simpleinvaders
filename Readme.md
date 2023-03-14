@@ -2,9 +2,9 @@
 
 [![CMakeBuilds](https://github.com/chfhhd/raylibstarter/actions/workflows/cmake.yml/badge.svg)](https://github.com/chfhhd/raylibstarter/actions/workflows/cmake.yml)
 
-A simple Space Invaders clone for educational use based on the raylibstarter project template.
+A simple Space Invaders clone - not a full game - to demonstrate some object-oriented techniques in C++ using the raylib library.
 
-This raylib C++ project template for CMake is based on the window scale letterbox example [1] contributed by 
+This project uses code from the window scale letterbox example [1] contributed by 
 Anata (@anatagawa) and reviewed by Ramon Santamaria (@raysan5) and the CMakeLists.txt 
 example provided in the Raylib source code [2].
 
