@@ -6,6 +6,8 @@ A simple Space Invaders clone - not a full game - to demonstrate some object-ori
 
 Note also the [project wiki](https://github.com/chfhhd/simpleinvaders/wiki): There you will find a detailed tutorial for this project.
 
+![simpleinvanders](https://user-images.githubusercontent.com/19432004/225006750-d10cdd97-f80b-4f9c-9a17-d0fefe4f5e51.png)
+
 This project uses code from the window scale letterbox example [1] contributed by 
 Anata (@anatagawa) and reviewed by Ramon Santamaria (@raysan5) and the CMakeLists.txt 
 example provided in the Raylib source code [2].
