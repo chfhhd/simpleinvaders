@@ -1,6 +1,6 @@
 # simpleinvaders
 
-[![CMakeBuilds](https://github.com/chfhhd/raylibstarter/actions/workflows/cmake.yml/badge.svg)](https://github.com/chfhhd/raylibstarter/actions/workflows/cmake.yml)
+[![CMakeBuilds](https://github.com/chfhhd/simpleinvaders/actions/workflows/cmake.yml/badge.svg)](https://github.com/chfhhd/simpleinvaders/actions/workflows/cmake.yml)
 
 A simple Space Invaders clone - not a full game - to demonstrate some object-oriented techniques in C++ using the raylib library.
 
