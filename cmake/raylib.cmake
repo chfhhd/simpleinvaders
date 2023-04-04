@@ -11,9 +11,9 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
     FetchContent_Declare(
             raylib
             # Download a specific release
-            # URL https://github.com/raysan5/raylib/archive/refs/tags/4.5.0.tar.gz
+            URL https://github.com/raysan5/raylib/archive/refs/tags/4.5.0.tar.gz
             # Download current working state
-            URL https://github.com/raysan5/raylib/archive/master.tar.gz
+            # URL https://github.com/raysan5/raylib/archive/master.tar.gz
     )
 
     FetchContent_GetProperties(raylib)
